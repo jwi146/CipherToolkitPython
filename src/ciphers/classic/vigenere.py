@@ -10,12 +10,29 @@ def encrypt(plaintext: str, keyword: str ):
             base = ord('A') if char.isupper() else ord('a') #base and shifted act the same as caesar cipher
             shifted = (ord(char)-base + shift) % 26 + base
             ciphertext.append(chr(shifted))
+            keyIndex += 1
         else:
             ciphertext.append(char)
     
     return ''.join(ciphertext)
             
 #decrypt function by doing encrypt with negative shift
-def decryption (ciphertext: str, keyword: str):
+def decrypt (ciphertext: str, keyword: str):
     key = keyword.lower()
+    plaintext=[]
+    keyIndex = 0
+    
+    for char in ciphertext:
+        if char.isalpha():
+            shift = ord(key[keyIndex % len(key)]) - ord('a')#convert current key letter into is alphabet value between 0-25 
+            base = ord('A') if char.isupper() else ord('a') #base and shifted act the same as caesar cipher
+            shifted = (ord(char)-base - shift) % 26 + base
+            plaintext.append(chr(shifted))
+            keyIndex += 1
+        else:
+            plaintext.append(char)
+    
+    return ''.join(plaintext)
+    
+    
     
