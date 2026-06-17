@@ -5,6 +5,13 @@ def encrypt (plaintext:str, key: str):
     
     for char in plaintext:
         if char.isalpha():
-            base = ord('A') if char.isupper() else ord('a') #bound to either upper or lower case ASCII values
-            charPos
+            if char.isupper():
+                charUpper = True
+            else:
+                charUpper = False
+            
+            textPos = ord(char.lower()) - ord('a') 
+            replacement = key[textPos]
+            
         
+            
