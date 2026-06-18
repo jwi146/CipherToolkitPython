@@ -23,7 +23,7 @@ decrypted = rot13(encrypted)
 
 print(f"Encrypted: {encrypted}")
 print(f"Decrypted: {decrypted}")
-"""
+
 #vigenere testing
 from ciphers.classic.vigenere import encrypt, decrypt
 
@@ -33,5 +33,18 @@ keyword = input('Please enter your keyword: ')
 encrypted = encrypt(message, keyword)
 decrypted = decrypt (encrypted, keyword)
 
+print(f"Encrypted: {encrypted}")
+print(f"Decrypted: {decrypted}")
+"""
+#substituition test
+from ciphers.classic.substitution import encrypt, decrypt
+
+plaintext = input("Please enter your plaintext: ")
+key = input("Please enter your key: ")
+
+encrypted = encrypt(plaintext, key)
+decrypted = decrypt(encrypted, key)
+
+print(f"Original:  {plaintext}")
 print(f"Encrypted: {encrypted}")
 print(f"Decrypted: {decrypted}")

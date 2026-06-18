@@ -12,6 +12,38 @@ def encrypt (plaintext:str, key: str):
             
             textPos = ord(char.lower()) - ord('a') 
             replacement = key[textPos]
+            if charUpper:
+                replacement  = replacement.upper()
+            ciphertext.append(replacement)
+        else:
+            ciphertext.append(char)
+    
+    return ''.join(ciphertext)
+
+def decrypt (ciphertext: str, key: str):
+    key = key.lower()
+    plaintext = []
+    
+    for char in ciphertext:
+        if char.isalpha():
+            if char.isupper():
+                charUpper = True
+            else:
+                charUpper = False
+                
+            cipherPos = key.index(char.lower())
+            plaintextOrig = chr(cipherPos + ord('a'))
+            
+            if charUpper:
+                plaintextOrig = plaintextOrig.upper()
+            
+            plaintext.append(plaintextOrig)
+        else:
+            plaintext.append(char)
+            
+    return ''.join(plaintext)
+            
+    
             
         
             
