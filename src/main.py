@@ -35,7 +35,7 @@ decrypted = decrypt (encrypted, keyword)
 
 print(f"Encrypted: {encrypted}")
 print(f"Decrypted: {decrypted}")
-"""
+
 #substituition test
 from ciphers.classic.substitution import encrypt, decrypt
 
@@ -44,6 +44,20 @@ key = input("Please enter your key: ")
 
 encrypted = encrypt(plaintext, key)
 decrypted = decrypt(encrypted, key)
+
+print(f"Original:  {plaintext}")
+print(f"Encrypted: {encrypted}")
+print(f"Decrypted: {decrypted}")
+
+"""
+#test rail fence
+from ciphers.classic.railFence import encrypt, decrypt
+
+plaintext = input("Please enter your plaintext: ")
+noOfRails = int(input("Please enter the number of rails: "))
+
+encrypted = encrypt(plaintext, noOfRails)
+decrypted = decrypt (encrypted, noOfRails)
 
 print(f"Original:  {plaintext}")
 print(f"Encrypted: {encrypted}")
