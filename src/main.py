@@ -1,7 +1,7 @@
-#temporary main for testing ciphers
-
-#caesar cipher test
+#Temporary main for testing ciphers
 """
+#caesar cipher test
+
 from ciphers.classic.caesar import encrypt, decrypt
 
 message = input('Please enter your plaintext: ')
@@ -49,7 +49,7 @@ print(f"Original:  {plaintext}")
 print(f"Encrypted: {encrypted}")
 print(f"Decrypted: {decrypted}")
 
-"""
+
 #test rail fence
 from ciphers.classic.railFence import encrypt, decrypt
 
@@ -62,3 +62,12 @@ decrypted = decrypt (encrypted, noOfRails)
 print(f"Original:  {plaintext}")
 print(f"Encrypted: {encrypted}")
 print(f"Decrypted: {decrypted}")
+
+"""
+# testing hashing
+from ciphers.modern.hashing import hashText
+
+text = input("Please enter your plaintext: ")
+algorithm = input("Please enter the algorithm (md5/sha1/sha256/sha512): ")
+
+print(f"Hash: {hashText(text, algorithm)}")
