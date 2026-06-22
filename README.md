@@ -3,4 +3,7 @@
 - Encrypt / decrypt plaintexts with different ciphers using this CLI tool
 - Run by starting main in the terminal
 - Classic ciphers : Caesar, Vigenere, Rot13, Substitution, Rail Fence
-- Only the classic ciphers currently implemented implemened currently 
+- Hashing (md5/sha1/sha256/sha512)
+- Modern ciphers: DES, AES
+- Only the classic ciphers and hashing currently implemented implemened currently
+- main.py currently being used for testing
