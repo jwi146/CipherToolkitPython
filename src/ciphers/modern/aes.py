@@ -51,4 +51,43 @@ def encrypt (plaintext:str, passphrase:str, keysize:int):
     
     return (salt + IV + ciphertext).hex()
     
+#decrypt by reversing the process
+def decrypt(ciphertext:str, passphrase:str, keySize:int):
     
+    #convert key to bytes
+    keyBytes = keySize//8
+    
+    #decode the hex string
+    ciphertext = bytes.fromhex(ciphertext)
+    
+    #split the ciphertext into its components
+    salt = ciphertext[:16] #first 16 is salt
+    IV = ciphertext [16:32] #next 16 iv
+    ciphertext = ciphertext[32:] #the rest is the text
+    
+    #derive the same key
+    kdf = PBKDF2HMAC(
+        algorithm = hashes.SHA256(),
+        length = keyBytes,
+        salt = salt,
+        iterations = 100000
+    )
+    
+    key = kdf.derive(passphrase.encode())
+    
+    #create the AES-CBC cipher using the key and iv
+    cipher = Cipher(
+        algorithms.AES(key), modes.CBC(IV)
+    )
+    
+    #decrypt the cipher
+    decryptor = cipher.decryptor()
+    plaintext = decryptor.update(ciphertext)
+    plaintext += decryptor.finalize()
+    
+    # unpad the text
+    unpadder = padding.PKCS7(128).unpadder()
+    unpadded = unpadder.update(plaintext)
+    unpadded += unpadder.finalize()
+    
+    return unpadded.decode()
