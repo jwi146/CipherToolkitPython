@@ -71,7 +71,7 @@ text = input("Please enter your plaintext: ")
 algorithm = input("Please enter the algorithm (md5/sha1/sha256/sha512): ")
 
 print(f"Hash: {hashText(text, algorithm)}")
-"""
+
 
 from ciphers.modern.aes import encrypt, decrypt
 
@@ -81,6 +81,18 @@ keysize = int(input("Enter key size (128/192/256): "))
 
 encrypted = encrypt(plaintext, passphrase, keysize)
 decrypted = decrypt(encrypted, passphrase, keysize)
+
+print(f"Original:  {plaintext}")
+print(f"Encrypted: {encrypted}")
+print(f"Decrypted: {decrypted}")
+"""
+from ciphers.modern.des import encrypt, decrypt
+
+plaintext = input("Please enter your plaintext: ")
+passphrase = input("Please enter your passphrase: ")
+
+encrypted = encrypt(plaintext, passphrase)
+decrypted = decrypt(encrypted, passphrase)
 
 print(f"Original:  {plaintext}")
 print(f"Encrypted: {encrypted}")
